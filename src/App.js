@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import Countdown from "react-countdown";
+
+const timer = 1800000 // 5000 (1800000 = 30min)
+
+const renderCalc = ({ completed }) => {
+  if (completed) {
+    return <>{Math.floor(Math.random() * 400) + 1}</>;
+  } else {
+    return "calculating...";
+  }
+};
+
+const Completionist = () => (
+  <Wrapper>
+    <PositionWrapper>
+      Your Position:{" "}
+      <Position id="MainPart_lbQueueNumber">
+        <Countdown date={Date.now() + 3000} renderer={renderCalc}></Countdown>
+      </Position>
+    </PositionWrapper>
+    <QueueWrapper>
+      Your queue id:{" "}
+      <QueueId id="hlLinkToQueueTicket2">387458y587jhifagyu</QueueId>
+    </QueueWrapper>
+  </Wrapper>
+);
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Tickets 4 fun - taylor simulator</p>
       </header>
+
+      <Countdown date={Date.now() + timer}>
+        <Completionist />
+      </Countdown>
     </div>
   );
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+`;
+
+const PositionWrapper = styled.div``;
+const QueueWrapper = styled.div``;
+const Position = styled.div``;
+const QueueId = styled.div``;
 
 export default App;
