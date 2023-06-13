@@ -1,7 +1,19 @@
 import styled from "styled-components";
 import Countdown from "react-countdown";
 
-const timer = 5000 // (1800000 = 30min), (5000 = 5 segundos)
+const timer = 5000; // (1800000 = 30min), (5000 = 5 segundos)
+
+const generateRandomHash = () => {
+  const array = new Uint8Array(16);
+  window.crypto.getRandomValues(array);
+
+  let hash = "";
+  for (let i = 0; i < array.length; i++) {
+    hash += array[i].toString(16).padStart(2, "0");
+  }
+
+  return hash;
+};
 
 const renderCalc = ({ completed }) => {
   if (completed) {
@@ -21,7 +33,7 @@ const Completionist = () => (
     </PositionWrapper>
     <QueueWrapper>
       Your queue id:{" "}
-      <QueueId id="hlLinkToQueueTicket2">387458y587jhifagyu</QueueId>
+      <QueueId id="hlLinkToQueueTicket2">{generateRandomHash()}</QueueId>
     </QueueWrapper>
   </Wrapper>
 );
