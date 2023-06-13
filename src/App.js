@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Countdown from "react-countdown";
 
-const timer = 1800000 // 5000 (1800000 = 30min)
+const timer = 5000 // (1800000 = 30min), (5000 = 5 segundos)
 
 const renderCalc = ({ completed }) => {
   if (completed) {
